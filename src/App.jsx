@@ -2,11 +2,26 @@ import { useState,useEffect } from 'react';
 import React from 'react';
 import reflecta_logo from './assets/reflecta.jpg';
 import axios from 'axios';
+import { ClipLoader } from "react-spinners";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 const API_USERS_URL = `${BASE_URL}/get_demo_users`
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "purple",
+};
 const App = () => {
-      const [users,setUsers] = useState(null)
+      let [loading, setLoading] = useState(true);
+      let [color, setColor] = useState("purple");
+      const [users,setUsers] = useState(<ClipLoader
+        color={color}
+        loading={loading}
+        cssOverride={override}
+        size={50}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />)
       useEffect(() => {
             axios.get(API_USERS_URL)
                 .then((response) => {
@@ -17,7 +32,7 @@ const App = () => {
                 });
         }, []);
     
-       
+    
     return (
         <div className='w-full h-screen  bg-white flex justify-center align-middle'>
             <div className='w-400 h-100 grid grid-cols-1 text-6xl '>
