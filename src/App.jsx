@@ -10,7 +10,7 @@ const App = () => {
       useEffect(() => {
             axios.get(API_USERS_URL)
                 .then((response) => {
-                    setUsers(response.data.status.number_of_users);
+                    setUsers(response.data.number_of_users);
                 })
                 .catch((error) => {
                     console.log(error);
