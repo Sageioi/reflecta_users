@@ -1,5 +1,5 @@
 import React from 'react';
-import reflecta_logo from './other_assets/reflecta.jpg';
+import reflecta_logo from './assets/reflecta.jpg';
 
 
 const BASE_URL = import.meta.env.VITE_API_URL;
